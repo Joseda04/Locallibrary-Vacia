@@ -1,15 +1,21 @@
 {
-    "builds": [
-      {
-        "src": "locallibrary/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "runtime": "python3.10.12" }
+  "builds": [
+    {
+      "src": "django_app_name/wsgi.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "migrate_modelDB.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "locallibrary/wsgi.py"
-      }
-    ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "django_app_name/wsgi.py"
+    }
+  ]
 }
