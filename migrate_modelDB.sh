@@ -10,6 +10,6 @@ echo "Colectando StaticFiles..."
 python3 manage.py collectstatic --noinput
 
 python "$DJANGO_MANAGE_PATH" createsuperuser --noinput \
-  --username="$DJANGO_SUPERUSER_NAME" \
-  --email="$DJANGO_SUPERUSER_EMAIL" \
-  --password="$DJANGO_SUPERUSER_PASSWORD"
+  --username= config("$DJANGO_SUPERUSER_NAME") \
+  --email= config("$DJANGO_SUPERUSER_EMAIL") \
+  --password= config("$DJANGO_SUPERUSER_PASSWORD")
