@@ -9,7 +9,7 @@ python3 manage.py makemigrations && python3 manage.py migrate
 echo "Colectando StaticFiles..."
 python3 manage.py collectstatic --noinput
 
-python "$DJANGO_MANAGE_PATH" createsuperuser --noinput \
+python manage.py createsuperuser --noinput \
   --username= config("$DJANGO_SUPERUSER_NAME") \
   --email= config("$DJANGO_SUPERUSER_EMAIL") \
   --password= config("$DJANGO_SUPERUSER_PASSWORD")
