@@ -88,14 +88,25 @@ WSGI_APPLICATION = 'locallibrary.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config("POSTGRES_DATABASE"),
-        'USER': config("POSTGRES_USER"),
-        'PASSWORD': config("POSTGRES_PASSWORD"),
-        'HOST': config("POSTGRES_HOST"),
-        'PORT': 5432
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
+
+import os
+# Cargar la variable de entorno. El segundo argumento es
+# el valor que ha de tomarse cuando la variable no esté
+# definida.
+stage = os.getenv("MYPROJECT_STAGE", "development")
+if stage == "production":
+    # Producción.
+    from .settings_production import *
+elif stage == "development":
+    # Desarrollo.
+    from .settings_dev import *
+else:
+    # Arrojar un error si MYPROJECT_STAGE tiene un valor desconocido.
+    raise ValueError("Unknown stage: {stage}")
 
 
 # Password validation
