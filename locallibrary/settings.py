@@ -35,7 +35,7 @@ debug = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = ['.vercel.app','.garrisclub.es','127.0.0.1']
 
 # Set CSRF trusted origins to allow any app on Railway and the local testing URL
-CSRF_TRUSTED_ORIGINS = ['https://*.railway.app','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.garrisclub.es','https://*.127.0.0.1']
 
 
 # Application definition
